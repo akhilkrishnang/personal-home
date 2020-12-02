@@ -1,0 +1,120 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+:root {
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 3rem;
+    color: #444;
+    height: 100vh;
+    width: 100%;
+}
+.intro-content {    
+    font-size: 17vw;
+    line-height: 15.5vw;
+    font-weight: 500;   
+    background: #fff;   
+    margin: 0 auto;
+    width: max-content;
+}
+.intro-content__dot{
+    color:rgb(249, 79, 79);
+}
+.nav-links {
+    margin-top: 100px;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+}
+.nav-links__item {
+	border: 1px dashed#ccc;
+	margin-bottom: 1.2rem;
+    cursor: pointer;
+    height: max-content;
+    padding: 1rem;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+/* Check browser support for Grid features - and enable better layout */
+
+@supports (display: grid) {
+    body{
+        padding: 0;
+    }
+    .nav-links {
+        margin-top: 0;
+    }
+    .content {
+        display: grid;
+        gap: 20px 10px;
+        grid-template-columns: 20px 1fr 20px;
+        grid-template-rows: 30px 1fr 2fr 1fr 60px;
+        grid-template-areas: 
+        "header header theme-switch"
+        ". . ."
+        ". intro ."
+        ". nav-links ."
+        "social-icon footer footer";
+        height: 100%;
+        width: 100%;
+    }
+    .intro-content{
+        grid-area: intro;
+    }
+    .nav-links{
+        grid-area: nav-links;
+    }
+}
+
+
+/* Overriding grid & styles for large devices */
+
+@media (min-width:641px) {
+    .intro-content {    
+        font-size: 8vw;
+        line-height: 8vw;
+    }
+    .intro-content {
+        margin: 0;
+    }
+    .nav-links {
+        display: flex;
+    }
+    .nav-links__item {
+        margin-bottom: 0;
+        margin-left: 1rem;
+    }
+
+    @supports (display: grid) {
+        .content {
+            display: grid;
+            gap: 20px 10px;
+            grid-template-columns: 50px 1fr 1fr 50px;
+            grid-template-rows: 40px 1fr 2fr 100px 60px;
+            grid-template-areas: 
+            "header header header theme-switch"
+            ". . . ."
+            ". . intro intro"
+            ". . nav-links  ."
+            "social-icon footer footer footer";
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
