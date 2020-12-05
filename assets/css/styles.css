@@ -11,15 +11,14 @@ body{
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 3rem;
-    color: #444;
+    color: #595959;
     height: 100vh;
     width: 100%;
 }
 .intro-content {    
     font-size: 17vw;
     line-height: 15.5vw;
-    font-weight: 500;   
-    background: #fff;   
+    font-weight: 500; 
     margin: 0 auto;
     width: max-content;
 }
@@ -29,6 +28,7 @@ body{
 .nav-links a {
     color: inherit; 
     text-decoration: none;
+    height: max-content;
 }
 .nav-links {
     margin-top: 100px;
@@ -43,6 +43,9 @@ body{
     cursor: pointer;
     height: max-content;
     padding: 1rem;
+}
+.nav-links__item:hover {
+    background: rgba(227, 227, 227, 0.3);
 }
 
 .noselect {
@@ -84,10 +87,50 @@ body{
     .nav-links{
         grid-area: nav-links;
     }
+    .theme-switch{
+        grid-area: theme-switch;
+        background: rgba(227, 227, 227, 0.3);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        cursor: pointer;
+    }
 }
 
 
 /* Overriding grid & styles for large devices */
+
+@media (min-width:960px) {
+    .bg-pattern__circle--1 {
+        border: 8px solid #f9c826;
+        border-radius: 22px;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        left: 10%;
+        top: 45%;
+    }
+    .bg-pattern__circle--2 {
+        border: 10px solid #f9c826;
+        border-radius: 35px;
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        left: 30%;
+        top: 25%;
+        opacity: 0.6;
+    }
+    .bg-pattern__circle--3 {
+        border: 6px solid #f9c826;
+        border-radius: 13px;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        left: 45%;
+        top: 85%;
+    }
+}
 
 @media (min-width:641px) {
     .intro-content {    
@@ -96,13 +139,15 @@ body{
     }
     .intro-content {
         margin: 0;
+        z-index: 1;
     }
     .nav-links {
         display: flex;
+        z-index: 1;
     }
     .nav-links__item {
         margin-bottom: 0;
-        margin-left: 1rem;
+        margin-right: 1rem;
     }
 
     @supports (display: grid) {
@@ -121,4 +166,25 @@ body{
             width: 100%;
         }
     }
+}
+
+body.dark-theme{
+    animation: lighttodark 0.5s;
+    color: #fff; 
+    background-color: #2f2f2f;
+}
+body.light-theme{
+    animation: darktolight 0.5s;
+    color: #595959; 
+    background-color: #fff;
+}
+
+@keyframes lighttodark {
+  from {color: #595959; background-color: #fff;}
+  to {color: #fff; background-color: #2f2f2f;}
+}
+
+@keyframes darktolight {    
+    from {color: #fff; background-color: #2f2f2f;}
+    to {color: #595959; background-color: #fff;}
 }
