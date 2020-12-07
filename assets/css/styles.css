@@ -1,19 +1,21 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
+
 .dark-theme{
     --fg-color: #fff; 
     --bg-color: #2f2f2f;
+    --border-color: #464646;
+    --projected-color: #464646;
 }
 .light-theme{
     --fg-color: #595959; 
     --bg-color: #fff;
+    --border-color: #ccc;
+    --projected-color: #f0f0f0;
 }
-
 :root {
-    font-size: 62.5%;
+    font-size: 62.5%; 
+
+    --akg-yellow: #f9c826;
+    --akg-red: #f94f4f;
 }
 body{
     font-size: 1.6rem;
@@ -33,7 +35,7 @@ body{
     width: max-content;
 }
 .intro-content__dot{
-    color:rgb(249, 79, 79);
+    color:var(--akg-red);
 }
 .nav-links a {
     color: inherit; 
@@ -48,14 +50,15 @@ body{
     text-transform: uppercase;
 }
 .nav-links__item {
-	border: 1px dashed#ccc;
+	border: 1px dashed var(--border-color);
 	margin-bottom: 1.2rem;
     cursor: pointer;
     height: max-content;
     padding: 1rem;
 }
 .nav-links__item:hover {
-    background: rgba(227, 227, 227, 0.3);
+    background: var(--projected-color);
+    border-color: var(--projected-color);
 }
 
 .noselect {
@@ -66,6 +69,30 @@ body{
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+.theme-switch {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+    padding: 10px;
+    background: var(--projected-color);
+}
+.light-theme .theme-switch__icon{
+    background:url(../images/moon-black.svg);
+    width: 24px;
+    height: 24px;
+    filter: invert(77%) sepia(0%) saturate(0%) hue-rotate(138deg) brightness(90%) contrast(88%);
+}
+.dark-theme .theme-switch__icon{
+    background:url(../images/day-sunny.svg);
+    width: 24px;
+    height: 24px;
+    filter: invert(77%) sepia(0%) saturate(0%) hue-rotate(138deg) brightness(90%) contrast(88%);
 }
 
 /* Check browser support for Grid features - and enable better layout */
@@ -97,15 +124,6 @@ body{
     .nav-links{
         grid-area: nav-links;
     }
-    .theme-switch{
-        grid-area: theme-switch;
-        background: rgba(227, 227, 227, 0.3);
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        margin: 5px;
-        cursor: pointer;
-    }
 }
 
 
@@ -113,7 +131,7 @@ body{
 
 @media (min-width:960px) {
     .bg-pattern__circle--1 {
-        border: 8px solid #f9c826;
+        border: 8px solid var(--akg-yellow);
         border-radius: 22px;
         position: absolute;
         width: 50px;
@@ -122,7 +140,7 @@ body{
         top: 45%;
     }
     .bg-pattern__circle--2 {
-        border: 10px solid #f9c826;
+        border: 10px solid var(--akg-yellow);
         border-radius: 35px;
         position: absolute;
         width: 80px;
@@ -132,7 +150,7 @@ body{
         opacity: 0.6;
     }
     .bg-pattern__circle--3 {
-        border: 6px solid #f9c826;
+        border: 6px solid var(--akg-yellow);
         border-radius: 13px;
         position: absolute;
         width: 30px;
