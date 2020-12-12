@@ -3,13 +3,13 @@
     --fg-color: #fff; 
     --bg-color: #2f2f2f;
     --border-color: #464646;
-    --projected-color: #464646;
+    --projected-color: #393939;
 }
 .light-theme{
     --fg-color: #595959; 
     --bg-color: #fff;
     --border-color: #ccc;
-    --projected-color: #f0f0f0;
+    --projected-color: #e8e8e8;
 }
 :root {
     font-size: 62.5%; 
@@ -71,10 +71,8 @@ body{
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-.theme-switch {
+.theme-switch, .social-button {
 	position: absolute;
-	top: 10px;
-	right: 10px;
 	border-radius: 50%;
 	width: 24px;
 	height: 24px;
@@ -82,17 +80,80 @@ body{
     padding: 10px;
     background: var(--projected-color);
 }
-.light-theme .theme-switch__icon{
+.light-theme .theme-switch__icon, .light-theme .social-button__icon{
     background:url(../images/moon-black.svg);
     width: 24px;
     height: 24px;
     filter: invert(77%) sepia(0%) saturate(0%) hue-rotate(138deg) brightness(90%) contrast(88%);
 }
-.dark-theme .theme-switch__icon{
+.dark-theme .theme-switch__icon, .dark-theme .social-button__icon{
     background:url(../images/day-sunny.svg);
     width: 24px;
     height: 24px;
     filter: invert(77%) sepia(0%) saturate(0%) hue-rotate(138deg) brightness(90%) contrast(88%);
+}
+.theme-switch{
+    top: 10px;
+	right: 10px;
+}
+.social-button{
+    position: relative;
+    z-index: 3;
+}
+.social-links-container{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+}
+.light-theme .social-button__icon, .dark-theme .social-button__icon{
+    background:url(../images/link-line.svg);
+}
+.social-links{
+    width: calc(100vw - 45px);
+    height: 44px;
+    background-color: var(--projected-color); 
+    margin-left: -20px;
+    border-radius: 0 20px 20px 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+
+    -moz-transition: -moz-transform .5s;
+    -o-transition: -o-transform .5s;
+    -webkit-transition: -webkit-transform .5s;
+     -moz-transform-origin: left;
+    -ms-transform-origin: left;
+    -o-transform-origin: left;
+    -webkit-transform-origin: left;
+    transform-origin: left;
+    transition: transform .5s;
+}
+.social-links--hide {
+    -moz-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    -o-transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);   
+}
+
+.social-links a{
+    text-decoration: none;
+}
+.social-links__icon {
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-left: 5px;
+}
+.social-links__icon img{
+    height: 32px;
+    transform: translateX(0);
 }
 
 /* Check browser support for Grid features - and enable better layout */
@@ -106,9 +167,9 @@ body{
     }
     .content {
         display: grid;
-        gap: 20px 10px;
+        gap: 20px;
         grid-template-columns: 20px 1fr 20px;
-        grid-template-rows: 30px 1fr 2fr 1fr 60px;
+        grid-template-rows: 30px 0.5fr 2fr 1fr 80px;
         grid-template-areas: 
         "header header theme-switch"
         ". . ."
@@ -128,8 +189,13 @@ body{
 
 
 /* Overriding grid & styles for large devices */
+@media (min-width:640px) {
+    .social-links{
+        width: 300px;
+    }
+}
 
-@media (min-width:960px) {
+@media (min-width:960px) {        
     .bg-pattern__circle--1 {
         border: 8px solid var(--akg-yellow);
         border-radius: 22px;
@@ -176,6 +242,12 @@ body{
     .nav-links__item {
         margin-bottom: 0;
         margin-right: 1rem;
+    }
+    .social-links__icon i, .social-links__icon img{
+        opacity: 0.6;
+    }
+    .social-links__icon:hover i, .social-links__icon:hover img{
+        opacity: 1;
     }
 
     @supports (display: grid) {

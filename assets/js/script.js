@@ -42,3 +42,8 @@ function applyTheme(themeName) {
         document.body.classList.add(themeName);
     }
 }
+
+function showSocialLinks() {
+    var element = document.getElementById("socialLinksPanel");
+    element.classList.toggle("social-links--hide");
+}
