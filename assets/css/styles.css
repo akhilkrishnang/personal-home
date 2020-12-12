@@ -100,46 +100,49 @@ body{
     position: relative;
     z-index: 3;
 }
-.social-links-container{
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    display: flex;
-    align-items: center;
-}
 .light-theme .social-button__icon, .dark-theme .social-button__icon{
     background:url(../images/link-line.svg);
 }
+.social-links-container{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .social-links{
-    width: calc(100vw - 45px);
-    height: 44px;
+    width: 44px;
+    height: max-content;
     background-color: var(--projected-color); 
-    margin-left: -20px;
-    border-radius: 0 20px 20px 0;
+    margin-top: -20px;
+    border-radius: 0 0 20px 20px;
     z-index: 2;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 25px;
+    padding-top: 30px;
+    padding-bottom: 20px;
 
     -moz-transition: -moz-transform .5s;
     -o-transition: -o-transform .5s;
     -webkit-transition: -webkit-transform .5s;
-     -moz-transform-origin: left;
-    -ms-transform-origin: left;
-    -o-transform-origin: left;
-    -webkit-transform-origin: left;
-    transform-origin: left;
+     -moz-transform-origin: top;
+    -ms-transform-origin: top;
+    -o-transform-origin: top;
+    -webkit-transform-origin: top;
+    transform-origin: top;
     transition: transform .5s;
 }
 .social-links--hide {
-    -moz-transform: scaleX(0);
-    -ms-transform: scaleX(0);
-    -o-transform: scaleX(0);
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);   
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);   
 }
-
 .social-links a{
     text-decoration: none;
 }
@@ -149,7 +152,7 @@ body{
     cursor: pointer;
     display: flex;
     justify-content: center;
-    margin-left: 5px;
+    margin-top: 10px;
 }
 .social-links__icon img{
     height: 32px;
@@ -169,13 +172,13 @@ body{
         display: grid;
         gap: 20px;
         grid-template-columns: 20px 1fr 20px;
-        grid-template-rows: 30px 0.5fr 2fr 1fr 80px;
+        grid-template-rows: 30px 0.5fr 2fr 1fr 60px;
         grid-template-areas: 
-        "header header theme-switch"
+        "header header header"
         ". . ."
         ". intro ."
         ". nav-links ."
-        "social-icon footer footer";
+        "footer footer footer";
         height: 100%;
         width: 100%;
     }
@@ -189,12 +192,6 @@ body{
 
 
 /* Overriding grid & styles for large devices */
-@media (min-width:640px) {
-    .social-links{
-        width: 300px;
-    }
-}
-
 @media (min-width:960px) {        
     .bg-pattern__circle--1 {
         border: 8px solid var(--akg-yellow);
@@ -223,6 +220,56 @@ body{
         height: 30px;
         left: 45%;
         top: 85%;
+    }
+
+    .social-links-container{
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        top:auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .social-links{
+        height: 44px;
+        width: max-content;
+        background-color: var(--projected-color); 
+        margin-top: 0;
+        margin-left: -20px;
+        border-radius: 0 20px 20px 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 30px;
+        padding-right: 20px;
+    
+        -moz-transition: -moz-transform .5s;
+        -o-transition: -o-transform .5s;
+        -webkit-transition: -webkit-transform .5s;
+         -moz-transform-origin: left;
+        -ms-transform-origin: left;
+        -o-transform-origin: left;
+        -webkit-transform-origin: left;
+        transform-origin: left;
+        transition: transform .5s;
+    }
+    .social-links--hide {
+        -moz-transform: scaleX(0);
+        -ms-transform: scaleX(0);
+        -o-transform: scaleX(0);
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);   
+    }
+
+    .social-links__icon {
+        margin-top: 0px;
+        margin-left: 5px;
     }
 }
 
