@@ -47,3 +47,20 @@ function showSocialLinks() {
     var element = document.getElementById("socialLinksPanel");
     element.classList.toggle("social-links--hide");
 }
+
+function navigate(type) {
+    // Clear existing loading class if any
+    document.getElementById('navPr').classList.remove('loading');
+    document.getElementById('navPh').classList.remove('loading');
+    document.getElementById('navBl').classList.remove('loading');
+    // Add loading class to clicked element
+    var element = document.getElementById(type);
+    element.classList.add('loading');
+    if (type === 'navPr') {
+        window.location = 'https://profile.akhilkrishnang.com';
+    } else if (type === 'navPh') {
+        window.location = 'https://archives.akhilkrishnang.com';
+    } else if (type === 'navBl') {
+        window.location = '';
+    }
+}
