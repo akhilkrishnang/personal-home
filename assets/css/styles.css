@@ -4,12 +4,16 @@
     --bg-color: #2f2f2f;
     --border-color: #464646;
     --projected-color: #393939;
+    --link-color: #7d9ec5;
+    --link-bg-color: #4e4e4e;
 }
 .light-theme{
     --fg-color: #595959; 
     --bg-color: #fff;
     --border-color: #ccc;
     --projected-color: #e8e8e8;
+    --link-color: #526B89;
+    --link-bg-color: #d8d8d8;
 }
 :root {
     font-size: 62.5%; 
@@ -173,16 +177,18 @@ body{
     text-decoration: none;
 }
 .social-links__icon {
-    width: 40px;
+    width: 50px;
     text-align: center;
     cursor: pointer;
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    color: var(--link-color);
+    border-radius: 20px;
+    padding: 4px 0;
 }
-.social-links__icon img{
-    height: 32px;
-    transform: translateX(0);
+.social-links__icon:hover{
+    background: var(--link-bg-color);
 }
 
 /* Check browser support for Grid features - and enable better layout */
