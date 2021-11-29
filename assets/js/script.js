@@ -59,7 +59,7 @@ function navigate(type) {
     if (type === 'navPr') {
         window.location = 'https://profile.akhilkrishnang.com';
     } else if (type === 'navPh') {
-        window.location = 'https://archives.akhilkrishnang.com';
+        window.location = 'https://perspective.akhilkrishnang.com';
     } else if (type === 'navBl') {
         window.location = '';
     }
